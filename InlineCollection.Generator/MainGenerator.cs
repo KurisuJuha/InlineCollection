@@ -90,27 +90,38 @@ public class MainGenerator : IIncrementalGenerator
             ? ""
             : $"<{typeSymbol.TypeArguments.Select(t => t.ToDisplayString()).Join(", ")}>";
 
+        var fileName =
+            $"Collection{(targetTypeNamespace.IsGlobalNamespace ? "" : $".{targetTypeNamespace}")}.{targetType}.g.cs";
+
+        var typeCode = $$$"""
+                          partial struct {{{targetType}}}{{{typeArgumentsCode}}}
+                          {
+                          {{{GetPropertiesCode(length, typeText)}}}
+
+                          {{{GetConstructorCode(targetType, typeText, length)}}}
+
+                          {{{GetAsSpanCode(typeText, length)}}}
+
+                          {{{GetAsReadOnlySpanCode(typeText, length)}}}
+
+                          {{{GetEnumerableCode(typeText)}}}
+
+                          {{{GetAsEnumerableCode(typeText, length)}}}
+
+                          {{{GetIndexerCode(typeText)}}}
+                          }
+                          """;
+
         context.AddSource(
-            $"Collection.{targetTypeNamespace}.{targetType}.g.cs",
-            $$$"""
-               namespace {{{targetTypeNamespace}}}
-               {
-                   partial struct {{{targetType}}}{{{typeArgumentsCode}}}
-                   {
-               {{{GetPropertiesCode(length, typeText)}}}
-
-               {{{GetConstructorCode(targetType, typeText, length)}}}
-
-               {{{GetAsSpanCode(typeText, length)}}}
-
-               {{{GetAsReadOnlySpanCode(typeText, length)}}}
-
-               {{{GetEnumerableCode(typeText)}}}
-
-               {{{GetIndexerCode(typeText)}}}
-                   }
-               }
-               """
+            fileName,
+            targetTypeNamespace.IsGlobalNamespace
+                ? typeCode
+                : $$$"""
+                     namespace {{{targetTypeNamespace}}}
+                     {
+                     {{{typeCode.Indent()}}}
+                     }
+                     """
         );
     }
 
@@ -147,6 +158,18 @@ public class MainGenerator : IIncrementalGenerator
         return $$$"""
                   public global::System.Span<{{{type}}}>.Enumerator GetEnumerator()
                       => this.AsSpan().GetEnumerator();
+                  """.Indent(2);
+    }
+
+    private static string GetAsEnumerableCode(string type, int length)
+    {
+        return $$$"""
+                  public global::System.Collections.Generic.IEnumerable<{{{type}}}> AsEnumerable()
+                  {
+                  {{{
+                      Enumerable.Range(0, length).Select(i => $"yield return Item{i};").Join("\n").Indent()
+                  }}}
+                  }
                   """.Indent(2);
     }
 
