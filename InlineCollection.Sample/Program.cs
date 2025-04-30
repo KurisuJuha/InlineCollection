@@ -11,6 +11,8 @@ public class Program
         array[3] = "d";
         array.AsSpan()[0] = "a";
 
+        (1, 2, 3).AsSpan();
+
         foreach (var value in array) Console.WriteLine(value);
 
         foreach (var foo in (1, 2, 3, 4, 5, 6).AsSpan()) Console.WriteLine(foo);
