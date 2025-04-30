@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InlineCollection.Sample", "InlineCollection.Sample\InlineCollection.Sample.csproj", "{19909A21-26A3-40D6-AD96-30EB14140E7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InlineCollection.Generator", "InlineCollection.Generator\InlineCollection.Generator.csproj", "{67B9D05E-E434-4E28-9A43-77A3137895E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19909A21-26A3-40D6-AD96-30EB14140E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19909A21-26A3-40D6-AD96-30EB14140E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19909A21-26A3-40D6-AD96-30EB14140E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19909A21-26A3-40D6-AD96-30EB14140E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67B9D05E-E434-4E28-9A43-77A3137895E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67B9D05E-E434-4E28-9A43-77A3137895E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67B9D05E-E434-4E28-9A43-77A3137895E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67B9D05E-E434-4E28-9A43-77A3137895E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
