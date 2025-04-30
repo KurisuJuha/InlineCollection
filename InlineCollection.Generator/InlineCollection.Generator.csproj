@@ -2,23 +2,37 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <IsPackable>false</IsPackable>
+        <IsPackable>true</IsPackable>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
 
-        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-        <IsRoslynComponent>true</IsRoslynComponent>
-        <PackageId>InlineCollection.Generator</PackageId>
+        <PackageId>InlineCollection</PackageId>
+        <Authors>Juha</Authors>
+        <Description>Source generator for InlineCollection</Description>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+        <OutputItemType>Analyzer</OutputItemType>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <Version>1.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
             <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.0"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.3.0"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.0" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.3.0" PrivateAssets="all"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs/"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../README.md" Pack="true" PackagePath="/"/>
+        <None Include="../LICENSE" Pack="true" PackagePath=""/>
+    </ItemGroup>
 
 </Project>

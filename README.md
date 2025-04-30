@@ -1,5 +1,8 @@
 # InlineCollection
 
+[![NuGet](https://img.shields.io/nuget/v/InlineCollection.svg)](https://www.nuget.org/packages/InlineCollection)
+[![GitHub license](https://img.shields.io/github/license/KurisuJuha/InlineCollection.svg)](./LICENSE)
+
 English | [日本語](./README_JA.md)
 
 ## Overview
@@ -16,6 +19,17 @@ This library adds:
 -   A convenient functionality to convert `ValueTuple` to `Span`
 
 ## Installation
+
+### .NET CLI
+
+```bash
+dotnet add package InlineCollection
+```
+
+### Unity
+
+1. Install [NuGetForUnity](https://github.com/GlitchEnzo/NuGetForUnity)
+2. Open Nuget window and install InlineCollection
 
 ## Usage
 

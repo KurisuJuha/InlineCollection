@@ -1,5 +1,8 @@
 # InlineCollection
 
+[![NuGet](https://img.shields.io/nuget/v/InlineCollection.svg)](https://www.nuget.org/packages/InlineCollection)
+[![GitHub license](https://img.shields.io/github/license/KurisuJuha/InlineCollection.svg)](./LICENSE)
+
 [English](./README.md) | 日本語
 
 ## 概要
@@ -16,6 +19,17 @@ Unity の C#バージョンは 10 と低く、C#12 以降で使える`InlineArra
 -   より気軽に使える`ValueTuple`から`Span`への変換機能
 
 ## インストール
+
+### .NET CLI
+
+```bash
+dotnet add package InlineCollection
+```
+
+### Unity
+
+1. [NuGetForUnity](https://github.com/GlitchEnzo/NuGetForUnity) をインストール
+2. Nuget ウィンドウを開き、InlineCollection をインストール
 
 ## 使い方
 
