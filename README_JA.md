@@ -1,5 +1,7 @@
 # InlineCollection
 
+[English](./README.md) | 日本語
+
 ## 概要
 
 InlineCollection は Unity 向けにゼロアロケーションのスタック内コレクションを提供するライブラリです。

@@ -1,5 +1,7 @@
 # InlineCollection
 
+日本語 | [English](./README_JA.md)
+
 ## Overview
 
 InlineCollection is a library that provides zero-allocation stack-based collections for Unity.
