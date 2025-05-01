@@ -90,15 +90,19 @@ public class MainGenerator : IIncrementalGenerator
             ? ""
             : $"<{typeSymbol.TypeArguments.Select(t => t.ToDisplayString()).Join(", ")}>";
 
+        var selfTypeName = $"{targetType}{typeArgumentsCode}";
+
         var fileName =
             $"Collection{(targetTypeNamespace.IsGlobalNamespace ? "" : $".{targetTypeNamespace}")}.{targetType}.g.cs";
 
         var typeCode = $$$"""
-                          partial struct {{{targetType}}}{{{typeArgumentsCode}}}
+                          partial struct {{{selfTypeName}}}
                           {
                           {{{GetPropertiesCode(length, typeText)}}}
 
                           {{{GetConstructorCode(targetType, typeText, length)}}}
+
+                          {{{GetIndexerCode(typeText)}}}
 
                           {{{GetAsSpanCode(typeText, length)}}}
 
@@ -108,7 +112,7 @@ public class MainGenerator : IIncrementalGenerator
 
                           {{{GetAsEnumerableCode(typeText, length)}}}
 
-                          {{{GetIndexerCode(typeText)}}}
+                          {{{GetTupleImplicitConversionCode(selfTypeName, typeText, length)}}}
                           }
                           """;
 
@@ -192,6 +196,16 @@ public class MainGenerator : IIncrementalGenerator
                   public {{{type}}}({{{Enumerable.Range(0, length).Select(i => $"{elementType} item{i}").Join(", ")}}})
                   {
                   {{{Enumerable.Range(0, length).Select(i => $"Item{i} = item{i};").Join("\n").Indent()}}}
+                  }
+                  """.Indent(2);
+    }
+
+    private static string GetTupleImplicitConversionCode(string selfType, string elementType, int length)
+    {
+        return $$$"""
+                  public static implicit operator {{{selfType}}}(({{{Enumerable.Range(0, length).Select(i => elementType).Join(", ")}}}) tuple)
+                  {
+                      return new {{{selfType}}}({{{Enumerable.Range(0, length).Select(i => $"tuple.Item{i + 1}").Join(", ")}}});
                   }
                   """.Indent(2);
     }

@@ -15,6 +15,10 @@ public class Program
 
         foreach (var value in array) Console.WriteLine(value);
 
+        array = ("e", "f", "g", "h");
+
+        foreach (var value in array) Console.WriteLine(value);
+
         foreach (var foo in (1, 2, 3, 4, 5, 6).AsSpan()) Console.WriteLine(foo);
 
         foreach (var text in ("hoge", "foo", "bar").AsSpan()) Console.WriteLine(text);
