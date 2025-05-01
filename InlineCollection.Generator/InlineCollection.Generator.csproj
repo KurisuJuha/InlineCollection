@@ -8,14 +8,14 @@
 
         <PackageId>InlineCollection</PackageId>
         <Authors>Juha</Authors>
-        <Description>Source generator for InlineCollection</Description>
+        <Description></Description>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
         <OutputItemType>Analyzer</OutputItemType>
         <IncludeBuildOutput>false</IncludeBuildOutput>
-        <Version>1.0.1</Version>
+        <Version>1.1.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
