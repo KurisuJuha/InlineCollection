@@ -1,6 +1,6 @@
 # InlineCollection
 
-![img](docs/Image.png)
+![img](https://github.com/KurisuJuha/InlineCollection/blob/main/docs/Image.png?raw=true)
 
 [![NuGet](https://img.shields.io/nuget/v/InlineCollection.svg)](https://www.nuget.org/packages/InlineCollection)
 [![GitHub license](https://img.shields.io/github/license/KurisuJuha/InlineCollection.svg)](./LICENSE)
