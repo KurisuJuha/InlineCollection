@@ -18,7 +18,7 @@ public class MainGenerator : IIncrementalGenerator
                    namespace {{{Namespace}}}
                    {
                        [global::System.AttributeUsage(global::System.AttributeTargets.Struct, AllowMultiple = false, Inherited = false)]
-                       public class InlineCollectionAttribute : global::System.Attribute
+                       internal class InlineCollectionAttribute : global::System.Attribute
                        {
                            public global::System.Type ElementType { get; }
                            public uint Length { get; }
@@ -41,7 +41,7 @@ public class MainGenerator : IIncrementalGenerator
                 $$$"""
                    namespace {{{Namespace}}}
                    {
-                       public static class TupleToSpan
+                       internal static class TupleToSpan
                        {
                    {{{Enumerable.Range(2, 100).Select(GetTupleToSpanCode).Join("\n")}}}
                    {{{Enumerable.Range(2, 100).Select(GetTupleToReadOnlySpanCode).Join("\n")}}}
