@@ -32,3 +32,8 @@ public class Program
 public partial struct TestInlineCollection<T>
 {
 }
+
+[InlineCollection(typeof(string), 4)]
+public partial struct TestStringInlineCollection
+{
+}

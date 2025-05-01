@@ -106,6 +106,8 @@ public class MainGenerator : IIncrementalGenerator
 
                           {{{GetAsSpanCode(typeText, length)}}}
 
+                          {{{GetToArrayCode(typeText)}}}
+
                           {{{GetAsReadOnlySpanCode(typeText, length)}}}
 
                           {{{GetEnumerableCode(typeText)}}}
@@ -145,6 +147,13 @@ public class MainGenerator : IIncrementalGenerator
                   [global::System.Runtime.CompilerServices.MethodImpl(global::System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
                   public global::System.Span<{{{type}}}> AsSpan() 
                       => global::System.Runtime.InteropServices.MemoryMarshal.CreateSpan(ref Item0, {{{length}}});
+                  """.Indent(2);
+    }
+
+    private static string GetToArrayCode(string type)
+    {
+        return $$$"""
+                  public {{{type}}}[] ToArray() => AsSpan().ToArray();
                   """.Indent(2);
     }
 
