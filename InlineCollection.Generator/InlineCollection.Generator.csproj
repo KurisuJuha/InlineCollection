@@ -15,7 +15,7 @@
 
         <OutputItemType>Analyzer</OutputItemType>
         <IncludeBuildOutput>false</IncludeBuildOutput>
-        <Version>1.1.1</Version>
+        <Version>1.1.3</Version>
     </PropertyGroup>
 
     <ItemGroup>
